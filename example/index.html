@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <title>Cheevs - Browser Achievements</title>
+        <style type="text/css">
+            @font-face {
+                font-family: 'convectionregular';
+                src: url('cheevs/fonts/convectionregular-webfont.eot');
+                src: url('cheevs/fonts/convectionregular-webfont.eot?#iefix') format('embedded-opentype'),
+                     url('cheevs/fonts/convectionregular-webfont.woff') format('woff'),
+                     url('cheevs/fonts/convectionregular-webfont.ttf') format('truetype'),
+                     url('cheevs/fonts/convectionregular-webfont.svg#convectionregular') format('svg');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            /*! normalize.css v1.1.0 | MIT License | git.io/normalize */
+            article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}h2{font-size:1.5em;margin:.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:.83em;margin:1.67em 0}h6{font-size:.67em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}p,pre{margin:1em 0}code,kbd,pre,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+
+            .font { font-family: 'convectionregular', Arial; font-size: 30px; color: #fff; }
+            .no-marg { margin: 0; }
+            .no-pad { padding: 0; }
+
+            body { background: url(img/dvsup.png); }
+
+            a.button { background: url(img/icons.png); width: 64px; height: 64px; display: block; float: left; margin: 20px 0 0 20px; }
+            a#create { background-position: top left; }
+            a#github { background-position: bottom left; }
+            a#create:hover { background-position: top right; }
+            a#github:hover { background-position: bottom right; }
+            a:active, a:visited, a:focus { 
+                border: none;
+                outline: none;
+            }
+
+            .lt-ie9 #create, .lt-ie9 form { display: none; }
+
+            h1 { font-size: 50px; text-align: center; }
+
+            form { background: rgba(255,255,255,0.05); padding: 30px; width: 370px; overflow: hidden; height: 0px; opacity: 0; float: right; margin: 20px 20px 0 0;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    border-radius: 10px;
+                    -webkit-box-shadow:  2px 2px 5px 5px rgba(0, 0, 0, 0.2);
+                    box-shadow:  2px 2px 5px 5px rgba(0, 0, 0, 0.2); }
+
+            ul { list-style-type: none; }
+            ul li { margin-top: 20px; }
+            ul li ul li { float: left; margin: 0 20px 0 0;}
+
+            label:hover { color: #cccccc; cursor: pointer; }
+            input[type="radio"]{ vertical-align: middle; margin-bottom: 10px; margin-right: 6px; cursor: pointer; }
+            input[type="text"]{ width: 94%; padding: 5px 3%; border: 0; color: #000; background: #646969; }
+            input[type="submit"]{ padding: 5px 3%; width: 100%; color: #000; cursor: pointer; }
+        </style>
+    </head>
+    <body class="font">
+        <a href="#" class="button" id="create" alt="Create your own!" title="Create your own!"></a>
+        <a href="https://github.com/adamscoble/cheevs" class="button" id="github" target="_blank" alt="Put it on your website!" title="Put it on your website!"></a>
+        <form>
+            <h1 class="no-marg">Create Your Own</h1>
+            <ul class="no-marg no-pad">
+                <li>
+                    <ul class="no-marg no-pad">
+                        <li><input type="radio" name="position" id="pos-top" value="top"><label for="pos-top">TOP</label></li>
+                        <li><input type="radio" name="position" id="pos-center" value="center" checked><label for="pos-center">CENTER</label></li>
+                        <li class="no-marg"><input type="radio" name="position" id="pos-bottom" value="bottom"><label for="pos-bottom">BOTTOM</label></li>
+                        <div style="clear: both;"></div>
+                    </ul>
+                </li>
+                <li><input type="text" class="font" id="heading" placeholder="HEADING" /></li>
+                <li><input type="text" class="font" id="achievement" placeholder="ACHIEVEMENT" /></li>
+                <li><input type="submit" class="font" id="submit" value="CREATE" /></li>
+            </ul>
+        </form>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="js/jquery.cheevs-1.0.0.min.js"></script>
+
+        <script type="text/javascript">
+            /*! http://mths.be/placeholder v2.0.7 by @mathias */
+            (function(f,h,$){var a='placeholder' in h.createElement('input'),d='placeholder' in h.createElement('textarea'),i=$.fn,c=$.valHooks,k,j;if(a&&d){j=i.placeholder=function(){return this};j.input=j.textarea=true}else{j=i.placeholder=function(){var l=this;l.filter((a?'textarea':':input')+'[placeholder]').not('.placeholder').bind({'focus.placeholder':b,'blur.placeholder':e}).data('placeholder-enabled',true).trigger('blur.placeholder');return l};j.input=a;j.textarea=d;k={get:function(m){var l=$(m);return l.data('placeholder-enabled')&&l.hasClass('placeholder')?'':m.value},set:function(m,n){var l=$(m);if(!l.data('placeholder-enabled')){return m.value=n}if(n==''){m.value=n;if(m!=h.activeElement){e.call(m)}}else{if(l.hasClass('placeholder')){b.call(m,true,n)||(m.value=n)}else{m.value=n}}return l}};a||(c.input=k);d||(c.textarea=k);$(function(){$(h).delegate('form','submit.placeholder',function(){var l=$('.placeholder',this).each(b);setTimeout(function(){l.each(e)},10)})});$(f).bind('beforeunload.placeholder',function(){$('.placeholder').each(function(){this.value=''})})}function g(m){var l={},n=/^jQuery\d+$/;$.each(m.attributes,function(p,o){if(o.specified&&!n.test(o.name)){l[o.name]=o.value}});return l}function b(m,n){var l=this,o=$(l);if(l.value==o.attr('placeholder')&&o.hasClass('placeholder')){if(o.data('placeholder-password')){o=o.hide().next().show().attr('id',o.removeAttr('id').data('placeholder-id'));if(m===true){return o[0].value=n}o.focus()}else{l.value='';o.removeClass('placeholder');l==h.activeElement&&l.select()}}}function e(){var q,l=this,p=$(l),m=p,o=this.id;if(l.value==''){if(l.type=='password'){if(!p.data('placeholder-textinput')){try{q=p.clone().attr({type:'text'})}catch(n){q=$('<input>').attr($.extend(g(this),{type:'text'}))}q.removeAttr('name').data({'placeholder-password':true,'placeholder-id':o}).bind('focus.placeholder',b);p.data({'placeholder-textinput':q,'placeholder-id':o}).before(q)}p=p.removeAttr('id').hide().prev().attr('id',o).show()}p.addClass('placeholder');p[0].value=p.attr('placeholder')}else{p.removeClass('placeholder')}}}(this,document,jQuery));
+
+            function _createAchievement(){
+                var vars = _getQuery(),
+                    urlAchievement = {};
+                    
+                if(vars['p']) urlAchievement.position = vars['p'];
+                if(vars['h']) urlAchievement.heading = vars['h'].replace('--', '&mdash;').replace('amp;', '&amp;');
+                if(vars['a']) urlAchievement.achievement = vars['a'].replace('--', '&mdash;').replace('amp;', '&amp;');
+                if(!$.isEmptyObject(urlAchievement)) cheevs.add(urlAchievement);
+
+                if($('html').hasClass('lt-ie9')){
+                    cheevs.add({achievement: '50G &mdash; Rubbish Browser'});
+                }
+            }
+
+            function _getQuery(){
+                var vars = [],
+                    hash,
+                    q = document.URL.split('?')[1];
+
+                if(q != undefined){
+                    q = q.replace(/%20/gi, ' ').split('&');
+                    for(var i = 0; i < q.length; i++){
+                        hash = q[i].split('=');
+                        vars.push(hash[1]);
+                        vars[hash[0]] = hash[1];
+                    }
+                }
+
+                return vars;
+            }
+
+            _createAchievement();
+
+            var form = (function() {
+                var f = this;
+
+                f.$elem = $('form');
+                f.$create = $('#create');
+                f.$submit = $('#submit');
+                f.$heading = $('#heading');
+                f.$achievement = $('#achievement');
+                f.$textBoxes = f.$heading.add(f.$achievement);
+
+                f.isOpen = false;
+
+                $('input').placeholder();
+
+                f._addEventListeners = (function(){
+                    $('#create').click(function(e){
+                        e.preventDefault();
+                        if(f.isOpen){
+                            f.isOpen = false;
+                            f.animateClose();
+                        } else {
+                            f.isOpen = true;
+                            f.animateOpen();
+                        }
+                    });
+
+                    f.$textBoxes.keyup(function() {
+                        if (this.value.match(/[^a-zA-Z0-9 !$%&*()@#+-]/g)) {
+                            this.value = this.value.replace(/[^a-zA-Z0-9 !$%&*()@#+-]/g, '');
+                        }
+                    });
+
+                    $('#submit').click(function(e){
+                        e.preventDefault();
+                        var position = $('input[name=position]:checked').attr('value'),
+                            h = f.$heading.val() !== '' ? '&h=' + f.$heading.val().replace('&', 'amp;') : '',
+                            a = f.$achievement.val() !== '' ? '&a=' + f.$achievement.val().replace('&', 'amp;') : '';
+
+                        f.animateClose(function(){ window.location = window.location.pathname + "?p=" + position + h + a; });
+                    });
+                }());
+
+                f.animateOpen = function(){
+                    f.$elem.stop().animate({'height': 350, 'opacity': 1});
+                };
+
+                f.animateClose = function(callback){
+                    f.$elem.stop().animate({'height': 0, 'opacity': 0}, function(){
+                        if(typeof callback === 'function') callback.call();
+                    });
+                };
+
+                return this;
+            }());
+        </script>
+    </body>
+</html>
+
+
+
+
