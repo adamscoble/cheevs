@@ -91,8 +91,8 @@
                     urlAchievement = {};
                     
                 if(vars['p']) urlAchievement.position = vars['p'];
-                if(vars['h']) urlAchievement.heading = vars['h'].replace('--', '&mdash;').replace('amp;', '&amp;');
-                if(vars['a']) urlAchievement.achievement = vars['a'].replace('--', '&mdash;').replace('amp;', '&amp;');
+                if(vars['h']) urlAchievement.heading = vars['h'].replace('--', '&mdash;').replace('amp;', '&amp;').replace('qmark;', '&#63;');
+                if(vars['a']) urlAchievement.achievement = vars['a'].replace('--', '&mdash;').replace('amp;', '&amp;').replace('qmark;', '&#63;');
                 if(!$.isEmptyObject(urlAchievement)) cheevs.add(urlAchievement);
 
                 if($('html').hasClass('lt-ie9')){
@@ -146,16 +146,16 @@
                     });
 
                     f.$textBoxes.keyup(function() {
-                        if (this.value.match(/[^a-zA-Z0-9 !$%&*'"()@#+-]/g)) {
-                            this.value = this.value.replace(/[^a-zA-Z0-9 !$%&*'"()@#+-]/g, '');
+                        if (this.value.match(/[^a-zA-Z0-9 !$%&*'".,()\/\\:;\[\]@#?|+-]/g)) {
+                            this.value = this.value.replace(/[^a-zA-Z0-9 !$%&*'".,()\/\\:;\[\]@#?<>|+-]/g, '');
                         }
                     });
 
                     $('#submit').click(function(e){
                         e.preventDefault();
                         var position = $('input[name=position]:checked').attr('value'),
-                            h = f.$heading.val() !== '' ? '&h=' + f.$heading.val().replace('&', 'amp;').replace('"', "''") : '',
-                            a = f.$achievement.val() !== '' ? '&a=' + f.$achievement.val().replace('&', 'amp;').replace('"', "''") : '';
+                            h = f.$heading.val() !== '' ? '&h=' + f.$heading.val().replace('&', 'amp;').replace('"', "''").replace('?', "qmark;") : '',
+                            a = f.$achievement.val() !== '' ? '&a=' + f.$achievement.val().replace('&', 'amp;').replace('"', "''").replace('?', "qmark;") : '';
 
                         f.animateClose(function(){ window.location = window.location.pathname + "?p=" + position + h + a; });
                     });
