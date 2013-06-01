@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <title>Cheevs - Browser Achievements</title>
+        <meta name="description" content="Create your own browser based achievement! Complement or insult anyone you'd like, with a back handed congratulations.">
         <style type="text/css">
             @font-face {
                 font-family: 'convectionregular';
@@ -91,13 +92,27 @@
                     urlAchievement = {};
                     
                 if(vars['p']) urlAchievement.position = vars['p'];
-                if(vars['h']) urlAchievement.heading = vars['h'].replace('--', '&mdash;').replace('amp;', '&amp;').replace('qmark;', '&#63;');
-                if(vars['a']) urlAchievement.achievement = vars['a'].replace('--', '&mdash;').replace('amp;', '&amp;').replace('qmark;', '&#63;');
+                if(vars['h']) urlAchievement.heading = _formatAchievement(vars['h']);
+                if(vars['a']) urlAchievement.achievement = _formatAchievement(vars['a']);
                 if(!$.isEmptyObject(urlAchievement)) cheevs.add(urlAchievement);
 
                 if($('html').hasClass('lt-ie9')){
                     cheevs.add({achievement: '50G &mdash; Rubbish Browser'});
                 }
+            }
+
+            function _formatAchievement(string){
+                string = string
+                            .replace(/--/g, '&mdash;')
+                            .replace(/amp\//g, '&amp;')
+                            .replace(/%21/g, "!")
+                            .replace(/%40/g, "@")
+                            .replace(/%5B|%5D/g, "'")
+                            .replace(/qmark\//g, '&#63;')
+                            .replace(/lbrac\//g, '(')
+                            .replace(/rbrac\//g, ')')
+                            .replace(/\+/g, ' ');
+                return string;
             }
 
             function _getQuery(){
@@ -138,34 +153,44 @@
                         e.preventDefault();
                         if(f.isOpen){
                             f.isOpen = false;
-                            f.animateClose();
+                            f._animateClose();
                         } else {
                             f.isOpen = true;
-                            f.animateOpen();
+                            f._animateOpen();
                         }
                     });
-
+                    
                     f.$textBoxes.keyup(function() {
-                        if (this.value.match(/[^a-zA-Z0-9 !$%&*'".,()\/\\:;\[\]@#?|+-]/g)) {
-                            this.value = this.value.replace(/[^a-zA-Z0-9 !$%&*'".,()\/\\:;\[\]@#?<>|+-]/g, '');
+                        if (this.value.match(/[^a-zA-Z0-9 !$%&'".,():@#?|_-]/g)) {
+                            this.value = this.value.replace(/[^a-zA-Z0-9 !$%&'".,():@#?|_-]/g, '');
                         }
                     });
 
                     $('#submit').click(function(e){
                         e.preventDefault();
                         var position = $('input[name=position]:checked').attr('value'),
-                            h = f.$heading.val() !== '' ? '&h=' + f.$heading.val().replace('&', 'amp;').replace('"', "''").replace('?', "qmark;") : '',
-                            a = f.$achievement.val() !== '' ? '&a=' + f.$achievement.val().replace('&', 'amp;').replace('"', "''").replace('?', "qmark;") : '';
+                            h = f.$heading.val() !== '' ? '&h=' + f._formatInput(f.$heading.val()) : '',
+                            a = f.$achievement.val() !== '' ? '&a=' + f._formatInput(f.$achievement.val()) : '';
 
-                        f.animateClose(function(){ window.location = window.location.pathname + "?p=" + position + h + a; });
+                        f._animateClose(function(){ window.location = window.location.pathname + "?p=" + position + h + a; });
                     });
                 }());
 
-                f.animateOpen = function(){
+                f._formatInput = function(string){
+                    string = string
+                                .replace(/&/g, 'amp/')
+                                .replace(/"/g, "''")
+                                .replace(/\(/g, "lbrac/")
+                                .replace(/\)/g, "rbrac/")
+                                .replace(/\?/g, "qmark/");
+                    return string;
+                };
+
+                f._animateOpen = function(){
                     f.$elem.stop().animate({'height': 350, 'opacity': 1});
                 };
 
-                f.animateClose = function(callback){
+                f._animateClose = function(callback){
                     f.$elem.stop().animate({'height': 0, 'opacity': 0}, function(){
                         if(typeof callback === 'function') callback.call();
                     });
@@ -173,15 +198,6 @@
 
                 return this;
             }());
-
-            /* GA */
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-41376587-1', 'woheva.com');
-            ga('send', 'pageview');
         </script>
     </body>
 </html>
