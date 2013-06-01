@@ -15,7 +15,7 @@
 // * Minor graphical issues in IE7, 8 and some mobile browsers
 
 // ## Example
-// [http://woheva.com/cheevs/](http://localhost/achievementunlocked/?p=center&a=50G%20--%20Visited%20Cheevs!)
+// [http://woheva.com/cheevs/](http://woheva.com/cheevs/?p=center&a=50G%20--%20Visited%20Cheevs!)
 
 // ## Usage
 // Be sure to include the font-face declaration, either by including the provided stylesheet, or in your own stylesheet.
