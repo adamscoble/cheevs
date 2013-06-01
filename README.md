@@ -13,7 +13,7 @@ Activate animated achievements on your website (Currently Xbox only)
 * Minor graphical issues in IE7, 8 and some mobile browsers
 
 ## Usage
-Plugin attaches itself to the window automatically (`window.cheevs`). To add an achievement use the `add()` function:
+Plugin attaches itself to the window automatically (`window.cheevs`). To add an achievement use the `add()` method:
 
 `cheevs.add({achievement: 'An achievement!'})`
 
@@ -25,14 +25,7 @@ You can queue up as many achievements as you like. Optionally, you can pass an a
 		{achievement: "!", position: "bottom"}
 	])
 
-## Methods
-`add(achievementObject)` Add an achievement (See 'Usage' for an explanation)
-
-`add(arrayOfAchievementObjects)` Add a number of achievements (See 'Usage' for an explanation)
-
-`changeDirector(string)` Change the directory of Cheevs' files (default directory is `cheevs`)
-
-## Options
+## Achievement Object Parameters
 `type: 'xbox'` The achievement graphic to show and animate. (Currenly Xbox only)
 
 `position: 'center'` Where the achievement should be positioned (`'top'`, `'center'`, `'bottom'`)
@@ -40,6 +33,13 @@ You can queue up as many achievements as you like. Optionally, you can pass an a
 `heading: null` Updates the achievement heading. (Xbox default is 'ACHIEVEMENT UNLOCKED')
 
 `achievement: ''` Achievement text
+
+## Methods
+`add(achievementObject)` Add an achievement (See 'Usage' for an explanation)
+
+`add(arrayOfAchievementObjects)` Add a number of achievements (See 'Usage' for an explanation)
+
+`changeDirectory(string)` Change the directory of Cheevs' files (default directory is `cheevs`)
 
 ##Extra credits
 * Kilian Lippa (original idea inspiration)
